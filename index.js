@@ -21,13 +21,13 @@ document.getElementById("new-post").addEventListener("submit", function (e) {
     title: postTitle,
     body: postBody,
   };
-  /**
-   * Challenge: Send this off to the server!
-   *
-   * 1. BaseURL: https://apis.scrimba.com/jsonplaceholder/
-   * 2. Endpoint: /posts
-   * 3. method: ???
-   * 4. Request body: ??? (Remember to turn it into JSON)
-   * 5. Headers: ??? (Check the JSON Placeholder API docs or past casts for help)
-   */
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application.json" },
+  };
+
+  fetch("https://apis.scrimba.com/jsonplaceholder/posts", options)
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 });
